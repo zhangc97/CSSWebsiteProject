@@ -1,0 +1,104 @@
+[1531949493.159][INFO]: COMMAND InitSession {
+   "capabilities": {
+      "alwaysMatch": {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [ "--headless", "--no-sandbox", "--disable-dev-shm-usage", "--headless", "--disable-gpu" ],
+            "binary": "/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+            "extensions": [  ]
+         },
+         "platformName": "any"
+      },
+      "firstMatch": [ {
+
+      } ]
+   },
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "goog:chromeOptions": {
+         "args": [ "--headless", "--no-sandbox", "--disable-dev-shm-usage", "--headless", "--disable-gpu" ],
+         "binary": "/mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe",
+         "extensions": [  ]
+      },
+      "platform": "ANY",
+      "version": ""
+   }
+}
+[1531949493.162][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1531949493.166][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1531949493.194][INFO]: Launching chrome: /mnt/c/Program Files (x86)/Google/Chrome/Application/chrome.exe --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-dev-shm-usage --disable-gpu --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-automation --enable-logging --force-fieldtrials=SiteIsolationExtensions/Control --headless --ignore-certificate-errors --load-extension=/tmp/.org.chromium.Chromium.AWd4bC/internal --log-level=0 --metrics-recording-only --no-first-run --no-sandbox --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir=/tmp/.org.chromium.Chromium.YOeQjt data:,
+[0718/173133.339:ERROR:gpu_process_transport_factory.cc(1017)] Lost UI shared context.
+
+DevTools listening on ws://127.0.0.1:55749/devtools/browser/aa466096-5ffd-4963-9b6c-1c5b2189b0ce
+[1531949553.268][INFO]: RESPONSE InitSession unknown error: DevToolsActivePort file doesn't exist
+[1531949553.268][DEBUG]: Log type 'driver' lost 0 entries on destruction
+[1531949553.268][DEBUG]: Log type 'browser' lost 0 entries on destruction
+[0722/190449.350:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0722/190449.409:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0722/190449.726:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0723/135619.180:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0723/135619.262:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0723/135619.295:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0723/135619.374:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
+[0726/144532.536:WARNING:dns_config_service_win.cc(669)] Failed to read DnsConfig.
