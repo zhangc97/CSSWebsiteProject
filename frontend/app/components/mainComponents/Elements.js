@@ -56,10 +56,20 @@ class Elements extends React.Component {
   componentDidMount(){
     const currentroute = this.props.location.pathname
     if (routes.includes(currentroute)){
-      const {route} = this.state
       this.setState({route: routeConvert(currentroute)})
     }
     this.initialSearch(this.state.sorttype, routeConvert(currentroute))
+  }
+
+  componentDidUpdate() {
+    const current_route = routeConvert(this.props.location.pathname)
+    const pre_refresh_route = this.state.route
+    if(current_route != pre_refresh_route) {
+      this.setState({
+        route: current_route
+      })
+      this.initialSearch(this.state.sorttype, current_route)
+    }
   }
 
 
@@ -74,14 +84,6 @@ class Elements extends React.Component {
       .then(res => this.setState({data: res.object.results, fetching: false, currentpagenumber: 1,}))
       .catch(err => console.log('Error: ', err))
   }
-
-  searchData = () => {
-    const { sorttype, route, currentpagenumber, fetching } = this.state
-    this.props.dispatch(displayCode(sort, route, currentpagenumber))
-      .then(res => this.setState({data: this.state.data.concat(res.object.results), fetching: false, currentpagenumber: currentpagenumber +1}))
-      .catch(err => console.log('Error: ', err))
-  }
-
 
   render(){
     const { sorttype, dropdownvalue, route } = this.state;

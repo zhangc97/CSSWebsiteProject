@@ -9,12 +9,12 @@ class Profile(TimestampedModel):
         'core.User', on_delete=models.CASCADE, related_name='profile'
     )
     #OneToOneField builds a relationship between User model aswell as the Profile models
-    image = models.URLField(blank=True, default='https://static.productionready.io/images/smiley-cyrus.jpg')
+    image = models.ImageField(upload_to='profile_images', blank=True, null=False)
     name = models.CharField(db_index=True, max_length=255, unique=False, blank=True)
     contact = models.EmailField(db_index=True, max_length=254,blank=True)
     bio = models.TextField(blank=True)
-    website = models.URLField(db_index=True,max_length=200,blank=True,)
-    github = models.URLField(db_index=True,max_length=200,blank=True,)
+    website = models.TextField(db_index=True,blank=True,)
+    github = models.TextField(db_index=True,blank=True,)
     total_stars = models.BigIntegerField(default='0')
 
     def __str__(self):
@@ -31,3 +31,6 @@ class Profile(TimestampedModel):
 
     def getContact(self):
         return self.contact
+
+    def getImage(self):
+        return self.image

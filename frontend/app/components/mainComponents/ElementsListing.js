@@ -22,6 +22,12 @@ class ElementsListing extends React.Component {
     window.removeEventListener('scroll', this.onScroll, false)
   }
 
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      data: nextProps.data
+    })
+  }
+
   onScroll(){
     const {sorttype, count, data, route} = this.props
     const {pagenumber} = this.state

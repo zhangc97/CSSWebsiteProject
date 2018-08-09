@@ -21,7 +21,7 @@ class NonCreateView extends React.Component {
     return(
       <React.Fragment>
         <div className = 'elements-container'>
-          
+
               <Elements {...this.props} />
         </div>
       </React.Fragment>

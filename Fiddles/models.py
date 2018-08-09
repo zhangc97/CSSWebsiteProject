@@ -60,4 +60,7 @@ class Fiddle(TimestampedModel):
 
     def get_update(self):
         return self.updated_at
+
+    def update_creation(self):
+        return self.updated_At
 # Create your models here.

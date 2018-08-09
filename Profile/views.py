@@ -11,13 +11,24 @@ from .models import Profile
 from .renderers import ProfileJSONRenderer
 from .serializers import ProfileSerializer, ProfileUpdateSerializer
 from Utils.renderers import UtilJSONRenderer
+from django.shortcuts import render_to_response
+from rest_framework.parsers import MultiPartParser
+
+def ViewImage(request, username):
+    userprofile = Profile.objects.select_related('user').get(
+                user__username = username
+            )
+    image = userprofile.image.url
+    return render_to_response('image.html', {'image_url': image})
 
 class ProfileUpdateAPIView(UpdateAPIView):
         permission_classes = (IsAuthenticated,)
         serializer_class = ProfileUpdateSerializer
+        parser_classes = (MultiPartParser,)
 
         def update(self, request, *args, **kwargs):
             serializer_data = request.data
+            print(request)
             serializer = self.serializer_class(
                 request.user, data=serializer_data, partial=True
             )

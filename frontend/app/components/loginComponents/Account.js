@@ -1,10 +1,13 @@
 import React from 'react'
 import {fetch_profile, update_profile} from '../utils/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Dropzone from 'react-dropzone'
 
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]:value,
 })
+
+
 
 class Account extends React.Component {
   constructor(props){
@@ -18,6 +21,7 @@ class Account extends React.Component {
       github: '',
       bio: '',
       error: '',
+      image: null,
     }
   }
   componentDidMount(){
@@ -29,24 +33,49 @@ class Account extends React.Component {
   }
   onSubmit = (e) => {
     e.preventDefault()
-    const { bio, contact, github, name, website} = this.state
+    const { bio, contact, github, name, website, image} = this.state
     if (!(contact.includes('@')) && contact.length > 3) {
       this.setState({error: 'Please enter a valid email'})
     } else if(!(github.includes('github'))){
       this.setState({error: 'Please enter a valid github link'})
     } else {
-      const {data} = {bio, contact, github, name, website}
+      var formData = new FormData()
+      if(bio.length > 1){
+        formData.append('bio',bio)
+      }
+      if (contact.length>1){
+        formData.append('contact', contact)
+      }
+      if(name.length>1){
+        formData.append('name', name)
+      }
+      if(website.length>1){
+        formData.append('website', website)
+      }
+      if (image) {
+        formData.append('image', image)
+      }//Change all this to a map please in the future
+      if(update_profile(formData)){
+        this.setState({
+          error: 'Updated'
+        })
+      } else {
+        this.setState({
+          error: 'Error, please try again'
+        })
+      }
     }
+  }
 
-    update_profile(data)
-      .then
-      //trouble shoot and debug this
-
-    console.log(this.state)
+  onDrop = (files) => {
+    this.setState({
+      image:files[0]
+    })
   }
   render() {
 
-    const {edit_mode, user, name, contact, image, website, github, bio} = this.state
+    const { edit_mode, user, name, contact, image, website, github, bio, error} = this.state
+
     return(
       user.profile && !edit_mode
         ? (
@@ -80,8 +109,21 @@ class Account extends React.Component {
         )
         : (
           <div className = 'account-container'>
-            <img src = {null} style = {{marginBottom: '5px'}}></img>
-            <div>Upload</div>
+            <div className = 'dropzone' style = {{width: '100px', height: '100px', marginBottom: '10px', cursor: 'pointer'}}>
+              <Dropzone
+                onDrop ={this.onDrop}
+                style = {{
+                  position:'relative',
+                  width: '100%',
+                  height: '100%',
+                  borderWidth: '2px',
+                  borderColor: 'rgb(102, 102, 102)',
+                  borderStyle: 'dashed',
+                  borderRadius: '5px',
+                }}>
+                {image!=null ? <img src = {image.preview} style = {{width: '100%', height: '100%'}}></img> : <p>Upload</p>}
+              </Dropzone>
+            </div>
             <div style= {{borderBottom: '0.25px #cacaca solid', width:'100%', height:'1px'}} />
             <form onSubmit = {this.onSubmit} className = 'account-container'>
               <al>
@@ -132,7 +174,7 @@ class Account extends React.Component {
                 <ac>Bio:</ac>
               </al>
               <textarea
-                value = {bio}
+                defaultValue = {bio}
                 className ='boxsizingBorder'
                 onChange = {event => this.setState(byPropKey('bio', event.target.value))}
                 placeholder = 'Bio'

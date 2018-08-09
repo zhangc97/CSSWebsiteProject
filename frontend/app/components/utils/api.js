@@ -16,7 +16,22 @@ export const handle_stars = (data) => {
 }
 
 export const update_profile = (data) => {
-  var
+  var url = 'http://127.0.0.1:8000/api/profile'
+  let config = {
+    method: 'PATCH',
+    headers: {
+      'Authorization' : 'Token ' + localStorage.token
+    },
+    body: data
+  }
+  console.log(data.get('file'))
+  if(fetch(url, config)
+    .then(res => res ? true : false)){
+      return true
+    } else {
+      return false
+    }
+
 }
 
 export const fetch_profile = (token) => {

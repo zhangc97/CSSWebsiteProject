@@ -1,7 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 from .models import User
+
 from Profile.models import Profile
+
 
 class UserSerializer(serializers.ModelSerializer):
     #This class handles serialization and dserialization of User objects
@@ -14,6 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('email', 'username', 'password', 'token','profile')
         depth = 1
+
         read_only_fields=('token',)
 
     def update(self, instance, validated_data):
@@ -87,6 +90,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         model = User
         # List all of the fields that could possibly be included in a request
         # or response, including fields specified explicitly above.
+
         fields = ['email', 'username', 'password', 'token',]
 
     def create(self, validated_data):

@@ -47,9 +47,6 @@ class ListingBlock extends React.Component {
 
   }
 
-  componentWillUnmount() {
-
-  }
   componentDidUpdate(){
     if(this.state.expand == true){
       this.renderSource()
@@ -100,10 +97,6 @@ class ListingBlock extends React.Component {
       css_value: newValue
     })
     this.renderSource()
-  }
-
-  onChangeDiv = () => {
-    console.log('works')
   }
 
   onRatingChange = (newRating, name) => {

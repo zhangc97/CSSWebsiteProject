@@ -8,19 +8,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('image', 'username', 'name', 'contact', 'bio', 'website', 'github',)
         read_only_fields = ('username',)
 
     def get_image(self, obj):
         if obj.image:
-            return obj.image
-
+            return obj.image.url
         return 'https://static.productionready.io/images/smiley-cyrus.jpg'
-
-    def update(self, instance, validated_data):
-        print(instance, validated_data)
-
-        return instance
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
 
