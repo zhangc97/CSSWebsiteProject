@@ -36,6 +36,7 @@ class UserView extends React.Component {
   }
 
   componentDidMount(){
+    console.log(this.props)
     const user_id = this.props.match.params.id
     get_profile(user_id)
       .then(profile => this.setState(profile))

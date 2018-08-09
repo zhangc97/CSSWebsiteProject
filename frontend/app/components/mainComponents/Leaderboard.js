@@ -1,6 +1,10 @@
 import React from 'react'
 import {fetch_leaderboard} from '../utils/api'
 import Stars from 'react-star-ratings'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const server_url = "http://127.0.0.1:8000/api"
+
 class Leaderboard extends React.Component {
   constructor(props){
     super(props)
@@ -15,23 +19,26 @@ class Leaderboard extends React.Component {
   }
   render(){
     const data = this.state.object.results
+    console.log(data)
     return(
       data
-      ? (<table>
+      ? (<table style = {{marginTop: '130px'}}>
           <tbody>
-            <tr>
-            <td colSpan='2'>Leaderboard</td>
+            <tr style = {{justifyContent: 'center'}}>
+            <th>Leaderboard</th>
           </tr>
             {data.map((data,id) => (
               <tr key = {id}>
-                <th>{data.username}</th>
-                <th><Stars
-                rating = {1}
-                numberOfStars = {1}
-                starRatedColor = "yellow"
-                starDimension = "15px"
-                starSpacing = "0px"
-                />{data.total_stars}</th>
+                <th>
+                  <img src = {server_url+data.image} style = {{width:'25px', height: '25px', borderRadius: '25px', marginRight: '5px'}}></img>
+                  {data.username}
+                </th>
+                <th>
+                  <FontAwesomeIcon
+                    icon="star"
+                    style = {{color: 'yellow', fontSize: '14px' }}/>
+                  {data.total_stars}
+                </th>
               </tr>
             ))}
         </tbody>

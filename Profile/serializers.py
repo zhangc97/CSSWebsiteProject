@@ -8,13 +8,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ('image', 'username', 'name', 'contact', 'bio', 'website', 'github',)
+        fields = ('image', 'username', 'name', 'contact', 'bio', 'website', 'github', 'total_stars')
         read_only_fields = ('username',)
 
     def get_image(self, obj):
         if obj.image:
             return obj.image.url
-        return 'https://static.productionready.io/images/smiley-cyrus.jpg'
+        return '/media/profile_images/default.jpg'
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
 

@@ -8,7 +8,8 @@ import NavbarLinks from './Navbarlinks'
 import CreateView from './mainComponents/Createview'
 import NonCreateView from './mainComponents/NonCreateview'
 import UserView from './mainComponents/UserView'
-import Rightsidebar from './Nav'
+import Nav from './Nav'
+import Leaderboard from './mainComponents/Leaderboard'
 import PostView from './mainComponents/PostView'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckSquare, faUser, faStar, faHome, faEdit } from '@fortawesome/free-solid-svg-icons'
@@ -62,13 +63,16 @@ class App extends React.Component {
           : (<div>sdfsdfsfd</div>)}
           <ContentContainerRoutes {...this.props}/>
           <div className = 'right-sidebar-container'>
-              <Rightsidebar
-                {...this.props}
-                isAuthenticated = {isAuthenticated}
-                errorMessage = {errorMessage}
-                history = {history}
-              />
-            </div>
+              <Leaderboard />
+          </div>
+          <div className = 'top-bar'>
+            <Nav
+              {...this.props}
+              isAuthenticated = {isAuthenticated}
+              errorMessage = {errorMessage}
+              history = {history}
+            />
+          </div>
       </div>
     )
   }

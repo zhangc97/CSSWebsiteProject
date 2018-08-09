@@ -20,7 +20,6 @@ class Navbarlinks extends React.Component {
   componentWillMount() {
     const appElement = document.getElementById('body')
     const route = this.props.location.pathname
-    console.log('sdfsdf')
     Modal.setAppElement('body')
     if (routes.includes(route)) {
       const {isOpen} = this.state;
@@ -32,6 +31,14 @@ class Navbarlinks extends React.Component {
     event.preventDefault()
     const {isOpen} = this.state;
     this.setState({ isOpen: !isOpen})
+  }
+
+  navClick = (event, path) => {
+    event.preventDefault()
+    console.log(path)
+    this.props.history.push(path)
+    this.toggleModal(event)
+
   }
 
 
@@ -50,16 +57,16 @@ class Navbarlinks extends React.Component {
       <React.Fragment>
         {!isAuthenticated &&
           <React.Fragment>
-            <div onClick = {this.toggleModal} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></div>
-            <div onClick = {this.toggleModal} className = 'nav-btn' id = 'register'><Link to = '/register' className = 'nav-link'>Register</Link></div>
-            <div onClick = {this.toggleModal} className = 'nav-btn' id = 'signin'><Link to = '/signin' className = 'nav-link'>Sign in</Link></div>
+            <div onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></div>
+            <div onClick = {(e) => this.navClick(e, '/register')} className = 'nav-btn' id = 'register'><Link to = '/register' className = 'nav-link'>Register</Link></div>
+            <div onClick = {(e) => this.navClick(e, '/signin')} className = 'nav-btn' id = 'signin'><Link to = '/signin' className = 'nav-link'>Sign in</Link></div>
           </React.Fragment>
         }
 
         {isAuthenticated &&
           <React.Fragment>
-            <button onClick = {this.toggleModal} className = 'nav-btn' id = 'account'><Link to = '/Account' className = 'nav-link'>Account</Link></button>
-            <button onClick = {this.toggleModal} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/Account')} className = 'nav-btn' id = 'account'><Link to = '/Account' className = 'nav-link'>Account</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></button>
             <Logout onLogoutClick={() => dispatch(logoutUser())} />
           </React.Fragment>
         }

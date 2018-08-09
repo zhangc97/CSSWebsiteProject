@@ -25,6 +25,7 @@ class CodeSerializer(serializers.ModelSerializer):
         incoming_stars = validated_data.get('stars')
         instance_owner = instance.get_owner()
         instance_owner_profile = instance_owner.profile
+        print(instance_owner_profile.total_stars)
         instance.votes = instance.votes + 1
         instance.stars = incoming_stars + instance.stars
         instance_owner_profile.total_stars = instance_owner_profile.total_stars + incoming_stars

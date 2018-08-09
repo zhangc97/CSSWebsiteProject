@@ -13,20 +13,24 @@ class NavDesktop extends React.Component {
     const {isAuthenticated, errorMessage, dispatch} = this.props
     return (
         <React.Fragment>
+          <div className = 'logo-container' onClick = {()=> this.props.history.push('/')}>
+            logo
+          </div>
           <div className = 'links-container'>
-            <NavBarLinks
-              {...this.props}/>
+            {isAuthenticated
+              ? <div onClick = {() => this.props.history.push('/create')} className = 'create-btn'>Create</div>
+              : null}
+            <div className = 'account-nav-links'>
+              <NavBarLinks
+                {...this.props}/>
+            </div>
+
           </div>
-          <div className = 'profile-display-container'>
-          {isAuthenticated
-            ? <div onClick = {() => dispatch(pageChange())}><Link to ='/create'>Add</Link></div>
-            : null}
-          </div>
-          <Leaderboard />
+
         </React.Fragment>
     )
   }
 }
 
 
-export default NavDesktop
+export default withRouter(NavDesktop)
