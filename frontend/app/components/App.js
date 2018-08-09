@@ -59,12 +59,10 @@ class App extends React.Component {
               dispatch = {dispatch}
               isAuthenticated = {isAuthenticated}
               errorMessage = {errorMessage}/>
+              <Leaderboard />
           </div>)
           : (<div>sdfsdfsfd</div>)}
           <ContentContainerRoutes {...this.props}/>
-          <div className = 'right-sidebar-container'>
-              <Leaderboard />
-          </div>
           <div className = 'top-bar'>
             <Nav
               {...this.props}
