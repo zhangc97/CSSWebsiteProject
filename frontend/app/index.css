@@ -344,7 +344,8 @@ th {
 }
 /**----------------------------CreationSection --------------------------------------*/
 .editor-container {
-  width: 63%;
+  width: 75%;
+  margin-left: 15%;
   margin-top: 50px;
   height: calc(100vh - 50px);
   border-top-left-radius: 15px;
@@ -553,7 +554,8 @@ th {
   flex-direction: row;
   flex-wrap:wrap;
   justify-content: center;
-  width:50%;
+  width:75%;
+  margin-left: 15%;
 }
 
 .header-bar {
