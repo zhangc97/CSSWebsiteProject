@@ -344,12 +344,11 @@ th {
 }
 /**----------------------------CreationSection --------------------------------------*/
 .editor-container {
-  width: 75%;
+  width: 85%;
   margin-left: 15%;
   margin-top: 50px;
   height: calc(100vh - 50px);
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  
   display:flex;
   flex-direction: row;
   flex-wrap:wrap;

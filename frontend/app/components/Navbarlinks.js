@@ -8,6 +8,7 @@ import Account from './loginComponents/Account'
 import { loginUser, logoutUser } from './utils/actions'
 
 const routes = ['/signin', '/register', '/FAQ','/Account']
+
 class Navbarlinks extends React.Component {
   constructor(props){
     super(props);
@@ -27,24 +28,24 @@ class Navbarlinks extends React.Component {
     }
   }
 
+
+
   toggleModal = event => {
     event.preventDefault()
     const {isOpen} = this.state;
-    this.setState({ isOpen: !isOpen})
+    this.setState({ isOpen: true})
   }
 
   navClick = (event, path) => {
     event.preventDefault()
-    console.log(path)
     this.props.history.push(path)
     this.toggleModal(event)
-
   }
 
 
   toggleModalClose = () => {
     const {isOpen, changePage} = this.state
-    this.setState({ isOpen : !isOpen})
+    this.setState({ isOpen : false})
     this.props.history.push('/')
 
   }
@@ -101,7 +102,7 @@ class Navbarlinks extends React.Component {
         }}
         id = "modal_with_forms"
         isOpen = {isOpen}
-        closeTimeoutMS = {150}
+        closeTimeoutMS = {0}
         contentLabel = "modalB"
         shouldCloseOnOverlayClick = {true}
         onRequestClose = {this.toggleModalClose}
@@ -137,4 +138,4 @@ const faq = () => (
     Hello World, this is the FAQ
   </div>
 )
-export default withRouter(Navbarlinks)
+export default Navbarlinks
