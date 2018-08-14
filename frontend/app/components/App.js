@@ -3,65 +3,36 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {BrowserRouter, withRouter, Switch, Route} from 'react-router-dom'
 import { stayLogin, loginUser } from './utils/actions'
-import Sidebar from './mainComponents/Sidebar'
 import NavbarLinks from './Navbarlinks'
 import CreateView from './mainComponents/Createview'
 import NonCreateView from './mainComponents/NonCreateview'
 import UserView from './mainComponents/UserView'
 import Nav from './Nav'
-import Leaderboard from './mainComponents/Leaderboard'
+
 import PostView from './mainComponents/PostView'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt)
+library.add(faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt, faEnvelope)
 
 class App extends React.Component {
   constructor(props){
     super(props)
 
-    this.state = {
-      layoutMode: this.getLayoutMode()
-    }
-    this.onResize = this.onResize.bind(this)
   }
 
   componentDidMount(){
     if(localStorage.token && localStorage.token.length > 2 ){
       this.props.dispatch(stayLogin(localStorage.token))
     }
-    window.addEventListener('resize', this.onResize);
-  }
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
   }
-
-  onResize() {
-    this.setState({
-      layoutMode: this.getLayoutMode(),
-    })
-  }
-  getLayoutMode() {
-    return window.innerWidth > 1260
-      ? 'desktop'
-      : 'mobile'
-  }
-
   render(){
     const {dispatch, isAuthenticated, errorMessage} = this.props
     //Add API Call to check if user, if it is then keep logged in
     return (
       <div className = 'main-container'>
-        {this.state.layoutMode == 'desktop'
-          ? (<div className= 'sidebar-container'>
-            <Sidebar
-              dispatch = {dispatch}
-              isAuthenticated = {isAuthenticated}
-              errorMessage = {errorMessage}/>
-              <Leaderboard />
-          </div>)
-          : (<div>sdfsdfsfd</div>)}
+
           <ContentContainerRoutes {...this.props}/>
           <div className = 'top-bar'>
             <Nav

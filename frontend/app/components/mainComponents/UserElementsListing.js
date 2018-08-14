@@ -14,7 +14,6 @@ class UserElementsListing extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
     const {sorttype, element} = this.props
     const user_id = this.props.match.params.id
     get_user_fiddles(user_id,sorttype,element)

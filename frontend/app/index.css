@@ -98,7 +98,19 @@ th {
   align-items: center;
   justify-content: space-around;
 }
+.flex-row-simple {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: center;
+}
+.flex-row-simple-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width:90%;
 
+}
 .flex-row-custom {
   display:flex;
   flex-direction:row;
@@ -155,6 +167,7 @@ th {
   display: flex;
   flex-direction: row;
 }
+
 .noncreate-container {
   height:100%;
   width:100%;
@@ -245,6 +258,7 @@ th {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 5;
 }
 .sidebar-items{
   padding:5px;
@@ -547,9 +561,6 @@ th {
 
 }
 
-.button-margin {
-
-}
 .info-minimize-container {
   display: flex;
   flex-direction: column;
@@ -592,7 +603,15 @@ th {
   flex-wrap:wrap;
   justify-content: center;
   width:75%;
-  margin-left: 15%;
+  margin-left: 250px;
+}
+
+.user-display {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header-bar {
@@ -603,14 +622,6 @@ th {
   align-items: center;
 }
 
-.user-display-container {
-  width: 350px;
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
 .user-sort-bar {
   width: 100%;

@@ -50,9 +50,7 @@ class Navbarlinks extends React.Component {
   }
 
   render() {
-    //console.log(this.props)
     const {isOpen, changePage, modal_width, modal_height} = this.state;
-    console.log(modal_width, modal_height)
     const {dispatch, isAuthenticated, errorMessage} = this.props
     let styles = {
       overlay: {

@@ -5,8 +5,9 @@ import Stars from 'react-star-ratings'
 import UserElementsListing from './UserElementsListing'
 import Dropdown from 'react-dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import UserSideBar from './UserSideBar'
 import './componentStyling/dropdown.css';
+
 const url = 'http://127.0.0.1:8000/api'
 const options = [
   {value: '-votes', label: 'Most Popular'},
@@ -39,7 +40,6 @@ class UserView extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props)
     const user_id = this.props.match.params.id
     get_profile(user_id)
       .then(profile => this.setState(profile))
@@ -58,27 +58,10 @@ class UserView extends React.Component {
 
     return(
       profile != null
-      ? (<div className = 'user-info-container'>
-          <div className = 'header-bar'>
-            <img style = {{width:'100px',height:'100px',borderRadius: '100px'}} src = {url + profile.image} />
-            <div className = 'flex-column'>
-              <h1>{profile.username}</h1>
-
-              <a href = {profile.website} style = {{textDecoration: 'none'}}>Website</a>
-              <a href = {profile.github} style = {{textDecoration: 'none'}}style = {{textDecoration: 'none'}} >Github</a>
-              {show_contact
-                ? <span onClick = {()=>this.setState({show_contact: !show_contact})} style = {{cursor: 'pointer'}}>{profile.contact}</span>
-                : <span onClick = {()=>this.setState({show_contact: !show_contact})} style = {{cursor: 'pointer'}}>Contact</span>
-              }
-            </div>
-
-            <div className = 'flex-row-custom'>
-              <FontAwesomeIcon
-                icon="star"
-                style = {{color: 'yellow', fontSize: '20px' }}/>
-              <h1>{profile.total_stars}</h1>
-            </div>
-          </div>
+      ? (<React.Fragment>
+        <UserSideBar profile = {profile} />
+        <div className = 'user-info-container'>
+          
           <div className = 'user-sort-bar'>
             <div className = 'sort-container'>
               <h4 className = 'date-label'>Sort By:</h4>
@@ -104,7 +87,8 @@ class UserView extends React.Component {
             </div>
           </div>
           <UserElementsListing {...this.props} element = {element} sorttype = {sorttype} />
-      </div>)
+      </div>
+      </React.Fragment>)
       : <Loading />
     )
 

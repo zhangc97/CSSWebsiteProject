@@ -5,7 +5,6 @@ import Stars from 'react-star-ratings'
 import {handle_stars} from '../utils/api'
 import {withRouter, Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import expandimage from '../utils/expand.png'
 
 class ListingBlock extends React.Component {
   constructor(props){
