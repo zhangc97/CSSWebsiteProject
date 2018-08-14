@@ -4,6 +4,8 @@ import Loading from './Loading'
 import Stars from 'react-star-ratings'
 import UserElementsListing from './UserElementsListing'
 import Dropdown from 'react-dropdown'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import './componentStyling/dropdown.css';
 const url = 'http://127.0.0.1:8000/api'
 const options = [
@@ -32,6 +34,7 @@ class UserView extends React.Component {
       element: '',
       sort_value: '',
       element_value: '',
+      show_contact: false,
     }
   }
 
@@ -51,22 +54,28 @@ class UserView extends React.Component {
   }
 
   render(){
-    const {profile, sorttype, element, sort_value, element_value} = this.state
+    const {profile, sorttype, element, sort_value, element_value, show_contact} = this.state
 
     return(
       profile != null
       ? (<div className = 'user-info-container'>
           <div className = 'header-bar'>
             <img style = {{width:'100px',height:'100px',borderRadius: '100px'}} src = {url + profile.image} />
-            <h1>{profile.username}</h1>
+            <div className = 'flex-column'>
+              <h1>{profile.username}</h1>
+
+              <a href = {profile.website} style = {{textDecoration: 'none'}}>Website</a>
+              <a href = {profile.github} style = {{textDecoration: 'none'}}style = {{textDecoration: 'none'}} >Github</a>
+              {show_contact
+                ? <span onClick = {()=>this.setState({show_contact: !show_contact})} style = {{cursor: 'pointer'}}>{profile.contact}</span>
+                : <span onClick = {()=>this.setState({show_contact: !show_contact})} style = {{cursor: 'pointer'}}>Contact</span>
+              }
+            </div>
+
             <div className = 'flex-row-custom'>
-              <Stars
-                rating = {1}
-                numberOfStars = {1}
-                starRatedColor = "yellow"
-                starDimension = "15px"
-                starSpacing = "0px"
-                />
+              <FontAwesomeIcon
+                icon="star"
+                style = {{color: 'yellow', fontSize: '20px' }}/>
               <h1>{profile.total_stars}</h1>
             </div>
           </div>
