@@ -5,7 +5,7 @@ import Stars from 'react-star-ratings'
 import UserElementsListing from './UserElementsListing'
 import Dropdown from 'react-dropdown'
 import './componentStyling/dropdown.css';
-
+const url = 'http://127.0.0.1:8000/api'
 const options = [
   {value: '-votes', label: 'Most Popular'},
   {value: '-stars', label: 'Highest Rated'},
@@ -57,7 +57,7 @@ class UserView extends React.Component {
       profile != null
       ? (<div className = 'user-info-container'>
           <div className = 'header-bar'>
-            <img style = {{width:'50px',height:'50px'}}src = {profile.image} />
+            <img style = {{width:'100px',height:'100px',borderRadius: '100px'}} src = {url + profile.image} />
             <h1>{profile.username}</h1>
             <div className = 'flex-row-custom'>
               <Stars

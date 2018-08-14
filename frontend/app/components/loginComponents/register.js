@@ -2,8 +2,8 @@ import React from 'react';
 import {handle_signup} from '../utils/loginAPI'
 
 const SignUpPage = ({history}) => (
-  <div className = 'input-container'>
-    <h1>Sign Up</h1>
+  <div className = 'register-input-container'>
+    <span className = 'modal-h1'>Sign Up</span>
     <SignUpForm history = {history} />
   </div>
 )
@@ -101,7 +101,7 @@ class SignUpForm extends React.Component {
           className = 'input-style'
           id = 'passwordTwo'
         />
-        <button disabled = {isInvalid} type = 'submit'  id='submit'>
+        <button disabled = {isInvalid} type = 'submit'  id='submit' className = 'btn'>
           Register
         </button>
         {error && <p>{error.message}</p>}

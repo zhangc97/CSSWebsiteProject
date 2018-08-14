@@ -24,14 +24,15 @@ class NavDesktop extends React.Component {
             logo
           </div>
           <div className = 'links-container'>
-            {isAuthenticated
-              ? <div onClick = {(e) => this.onClick(e, '/create')} className = 'create-btn'>Create</div>
-              : null}
+
             <div className = 'account-nav-links'>
               <NavBarLinks
                 ref = {this.modal}
                 {...this.props}/>
             </div>
+            {isAuthenticated
+              ? <div onClick = {(e) => this.onClick(e, '/create')} className = 'create-btn'>Create</div>
+              : null}
 
           </div>
 

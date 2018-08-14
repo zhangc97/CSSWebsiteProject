@@ -104,7 +104,8 @@ class ListingBlock extends React.Component {
     const fiddle_id = result.post_id
     const data = {fiddle_id: fiddle_id,stars: newRating}
     if(!isAuthenticated){
-      this.props.history.push('/signin')
+      window.alert('Sign in to rate submissions')
+      //this.props.history.push('/signin')
     } else {
       this.setState({
         rating: newRating

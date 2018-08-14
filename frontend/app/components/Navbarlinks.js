@@ -13,7 +13,7 @@ class Navbarlinks extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isOpen: false
+      isOpen: false,
     }
 
   }
@@ -24,10 +24,9 @@ class Navbarlinks extends React.Component {
     Modal.setAppElement('body')
     if (routes.includes(route)) {
       const {isOpen} = this.state;
-      this.setState({ isOpen: true})
+      this.setState({ isOpen: true,})
     }
   }
-
 
 
   toggleModal = event => {
@@ -52,8 +51,35 @@ class Navbarlinks extends React.Component {
 
   render() {
     //console.log(this.props)
-    const {isOpen, changePage} = this.state;
+    const {isOpen, changePage, modal_width, modal_height} = this.state;
+    console.log(modal_width, modal_height)
     const {dispatch, isAuthenticated, errorMessage} = this.props
+    let styles = {
+      overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: '#0000007d',
+        zIndex: 5,
+      },
+      content: {
+        top : '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        border: '1px solid #ccc',
+        background: '#fffefe',
+        overflow: 'auto',
+        WebkitOverflowScrolling: 'touch',
+        borderRadius: '4px',
+        outline: 'none',
+        padding: '20px',
+      }
+    }
     return (
       <React.Fragment>
         {!isAuthenticated &&
@@ -72,34 +98,7 @@ class Navbarlinks extends React.Component {
           </React.Fragment>
         }
       <Modal
-        style={{
-          overlay: {
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: '#0000007d',
-            zIndex: 5,
-          },
-          content: {
-            top : '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-            border: '1px solid #ccc',
-            background: '#fffefe',
-            overflow: 'auto',
-            WebkitOverflowScrolling: 'touch',
-            borderRadius: '4px',
-            outline: 'none',
-            padding: '20px',
-            width: '400px',
-            height: '500px',
-          }
-        }}
+        style={styles}
         id = "modal_with_forms"
         isOpen = {isOpen}
         closeTimeoutMS = {0}

@@ -12,9 +12,9 @@ import Nav from './Nav'
 import Leaderboard from './mainComponents/Leaderboard'
 import PostView from './mainComponents/PostView'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faUser, faStar, faHome, faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faUser, faStar, faHome, faEdit)
+library.add(faCheckSquare, faUser, faStar, faHome, faEdit, faCloudUploadAlt)
 
 class App extends React.Component {
   constructor(props){
@@ -66,6 +66,7 @@ class App extends React.Component {
           <div className = 'top-bar'>
             <Nav
               {...this.props}
+              ref = {this.nav}
               isAuthenticated = {isAuthenticated}
               errorMessage = {errorMessage}
               history = {history}

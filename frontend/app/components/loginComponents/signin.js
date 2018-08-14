@@ -1,8 +1,8 @@
 import React from 'react'
 
 const SignInPage = (props)=> (
-  <div className = 'input-container'>
-    <h1>Sign In</h1>
+  <div className = 'sign-in-input-container'>
+    <span className = 'modal-h1'>Sign In</span>
     <SignInForm {...props} />
   </div>
 )

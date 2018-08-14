@@ -45,6 +45,11 @@ th {
   text-align: center;
 }
 
+.modal-h1 {
+  font-size: 2em;
+  margin-bottom: 35px;
+}
+
 .hover-pointer {
   cursor:pointer;
 }
@@ -77,6 +82,7 @@ th {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-right: 10px;
 }
 .flex-row {
   display:flex;
@@ -104,11 +110,12 @@ th {
   align-items: center;
 }
 .btn {
-  margin: 2%;
-  width: 40%;
+  margin: 5px;
+  width: 30%;
   height: 35px;
   border: 2px solid #999;
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .form-btn {
@@ -179,7 +186,14 @@ th {
   justify-content: space-between;
   position: fixed;
   border-bottom:  0.25px #cacaca solid;
-
+}
+.sort-bar-overlay {
+  margin-top: 50px;
+  width: 85%;
+  height: 60px;
+  z-index: 4;
+  background-color: #eaeaea;
+  position: fixed;
 }
 .sort-container {
   display: flex;
@@ -270,6 +284,9 @@ th {
   width: 80px;
   padding: 0px;
   height: 21px;
+  justify-content: center;
+  display: flex;
+
 
 }
 
@@ -278,6 +295,7 @@ th {
   color: #868686;
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 .nav-btn:hover{
@@ -288,7 +306,7 @@ th {
 .links-container{
   width: 400px;
   display:flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: space-between;
   background-color: transparent;
   align-items: center;
@@ -321,12 +339,18 @@ th {
 }
 
 .input-style {
-  padding: 6px;
+  padding: 8px;
   border: 1px solid #ccc;
   position: relative;
   background:transparent;
   background-color: #ffffff;
   width: 65%;
+  margin-bottom: 10px;
+}
+.input-style:focus {
+  transition: 0.2s;
+  background-color: #ededed;
+  outline: 0;
 }
 
 .element {
@@ -334,13 +358,22 @@ th {
   margin-right: 2%;
 }
 
-.input-container {
+.sign-in-input-container {
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width:100%;
-  height:100%;
+  width:300px;
+  height: 300px;
+}
+
+.register-input-container {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:350px;
+  height: 350px;
 }
 /**----------------------------CreationSection --------------------------------------*/
 .editor-container {
@@ -348,7 +381,7 @@ th {
   margin-left: 15%;
   margin-top: 50px;
   height: calc(100vh - 50px);
-  
+
   display:flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -595,10 +628,18 @@ th {
 }
 
 /*------------------------------Account-----------------------*/
-
-.account-container {
+.account-info {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
+}
+.account-listing {
+  margin-left: 10px;
+  font-size: 14px;
+}
+.account-container {
+  width: 375px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -606,11 +647,13 @@ th {
 al {
   width: 100%;
   height: 30px;
+  display: flex;
+  align-items: center;
+
 }
 
 ac {
   font-size: 16px;
-  margin-left: 5px;
   font-weight: 600;
 }
 .boxsizingBorder {
@@ -618,12 +661,15 @@ ac {
        -moz-box-sizing: border-box;
             box-sizing: border-box;
             width: 100%;
-            height: 100px;
-            resize: vertical
+            height: 150px;
+            resize: vertical;
+            border: 0.25px #cacaca solid;
 }
 
 .account-input-style {
   width: 99%;
   height: 30px;
-
+  margin-top: 5px;
+  border: 0.25px #cacaca solid;
+  padding: 2px;
 }

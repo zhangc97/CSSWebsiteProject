@@ -2,12 +2,12 @@ import React from 'react'
 import {fetch_profile, update_profile} from '../utils/api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Dropzone from 'react-dropzone'
-
+import Loading from '../mainComponents/Loading'
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]:value,
 })
 
-
+const url = 'http://127.0.0.1:8000/api'
 
 class Account extends React.Component {
   constructor(props){
@@ -77,33 +77,35 @@ class Account extends React.Component {
     const { edit_mode, user, name, contact, image, website, github, bio, error} = this.state
 
     return(
-      user.profile && !edit_mode
-        ? (
+      user.profile
+        ? !edit_mode
+          ? (
           <div className = 'account-container'>
-            <img src = {user.profile.image} style = {{marginBottom: '5px'}}></img>
+            <img src = {url + user.profile.image} style = {{marginBottom: '5px', width: '100px', height: '100px'}}></img>
             <div style= {{borderBottom: '0.25px #cacaca solid', width:'100%', height:'1px'}} />
-            <al>
-              <ac>Name:</ac>
-            </al>
-            <p>{user.profile.name}</p>
-            <al>
-              <ac>Contact Email:</ac>
-            </al>
-            <p>{user.profile.contact}</p>
-            <al>
-              <ac>Website:</ac>
-            </al>
-            <p>{user.profile.website}</p>
-            <al>
-              <ac>Github:</ac>
-            </al>
-            <p>{user.profile.github}</p>
-            <al>
-              <ac>Bio:</ac>
-            </al>
-            <textarea className ='boxsizingBorder'>
-              {user.profile.bio}
-            </textarea>
+            <div className = 'account-info'>
+              <al>
+                <ac>Name:</ac>
+              </al>
+              <span className = 'account-listing'>{user.profile.name}</span>
+              <al>
+                <ac>Contact Email:</ac>
+              </al>
+              <span className = 'account-listing'>{user.profile.contact}</span>
+              <al>
+                <ac>Website:</ac>
+              </al>
+              <span className = 'account-listing'>{user.profile.website}</span>
+              <al>
+                <ac>Github:</ac>
+              </al>
+              <span className = 'account-listing'>{user.profile.github}</span>
+              <al>
+                <ac>Bio:</ac>
+              </al>
+              <textarea className ='boxsizingBorder' readOnly defaultValue = {user.profile.bio}>
+              </textarea>
+          </div>
             <FontAwesomeIcon icon = "edit" style = {{position: 'absolute', top: '5', right: '5', fontSize: '20px', cursor: 'pointer'}} onClick = {()=>this.setState({edit_mode: !edit_mode})}/>
           </div>
         )
@@ -114,14 +116,14 @@ class Account extends React.Component {
                 onDrop ={this.onDrop}
                 style = {{
                   position:'relative',
-                  width: '100%',
-                  height: '100%',
+                  width: '100px',
+                  height: '100px',
                   borderWidth: '2px',
                   borderColor: 'rgb(102, 102, 102)',
                   borderStyle: 'dashed',
                   borderRadius: '5px',
                 }}>
-                {image!=null ? <img src = {image.preview} style = {{width: '100%', height: '100%'}}></img> : <p>Upload</p>}
+                {image!=null ? <img src = {image.preview} style = {{width: '100%', height: '100%'}}></img> : <FontAwesomeIcon icon = "cloud-upload-alt" style ={{position: 'absolute', fontSize: '40px', left: '25px', top: '25px'}}/>}
               </Dropzone>
             </div>
             <div style= {{borderBottom: '0.25px #cacaca solid', width:'100%', height:'1px'}} />
@@ -133,7 +135,7 @@ class Account extends React.Component {
                   value = {name}
                   onChange = {event => this.setState(byPropKey('name', event.target.value))}
                   type = 'text'
-                  placeholder = 'Name'
+                  placeholder = {user.profile.name}
                   className = 'account-input-style'
                   id = 'name'
                 />
@@ -144,7 +146,7 @@ class Account extends React.Component {
                   value = {contact}
                   onChange = {event => this.setState(byPropKey('contact', event.target.value))}
                   type = 'text'
-                  placeholder = 'Contact'
+                  placeholder = {user.profile.contact}
                   className = 'account-input-style'
                   id = 'contact'
                 />
@@ -155,7 +157,7 @@ class Account extends React.Component {
                   value = {website}
                   onChange = {event => this.setState(byPropKey('website', event.target.value))}
                   type = 'text'
-                  placeholder = 'Website'
+                  placeholder = {user.profile.website}
                   className = 'account-input-style'
                   id = 'website'
                 />
@@ -166,7 +168,7 @@ class Account extends React.Component {
                 value = {github}
                 onChange = {event => this.setState(byPropKey('github', event.target.value))}
                 type = 'text'
-                placeholder = 'Github'
+                placeholder = {user.profile.github}
                 className = 'account-input-style'
                 id = 'github'
               />
@@ -174,19 +176,19 @@ class Account extends React.Component {
                 <ac>Bio:</ac>
               </al>
               <textarea
-                defaultValue = {bio}
                 className ='boxsizingBorder'
                 onChange = {event => this.setState(byPropKey('bio', event.target.value))}
-                placeholder = 'Bio'
+                placeholder = {user.profile.bio}
                 id = 'bio'
               ></textarea>
-              <button type = 'submit'>
+              <button type = 'submit' className = 'btn'>
                 Submit
               </button>
             </form>
             {error ? error : null}
           </div>
         )
+        : <Loading />
     )
   }
 }

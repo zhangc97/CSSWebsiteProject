@@ -89,7 +89,9 @@ class Elements extends React.Component {
     const { sorttype, dropdownvalue, route } = this.state;
     return(
       <React.Fragment>
+        <div className = 'sort-bar-overlay'></div>
         <div className = 'sort-bar'>
+
           <div className = 'sort-container'>
             <h4 className = 'date-label'>Sort By:</h4>
             <Dropdown
