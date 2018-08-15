@@ -61,7 +61,7 @@ class UserView extends React.Component {
       ? (<React.Fragment>
         <UserSideBar profile = {profile} />
         <div className = 'user-info-container'>
-          
+          <div className = 'sort-bar-overlay' style = {{marginTop: '0'}}></div>
           <div className = 'user-sort-bar'>
             <div className = 'sort-container'>
               <h4 className = 'date-label'>Sort By:</h4>

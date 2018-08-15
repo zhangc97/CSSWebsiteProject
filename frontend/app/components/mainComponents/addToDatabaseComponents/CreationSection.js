@@ -39,9 +39,7 @@ class CreationSection extends React.Component {
   }
 
   componentDidMount() {
-    this.renderSource();
-    console.log(this.props)
-  }
+    this.renderSource();  }
   componentDidUpdate() {
     this.renderSource();
   }
@@ -61,7 +59,7 @@ class CreationSection extends React.Component {
     var doc = this.prepareSource(this.state.html_value, this.state.css_value)
     const iframe = this.refs.iframe
     const iframeContent = iframe.contentDocument;
-
+    console.log(this.state.html_value)
     iframeContent.open()
     iframeContent.write(doc)
     iframeContent.close()
@@ -168,6 +166,7 @@ class CreationSection extends React.Component {
                 enableSnippets: false,
                 showLineNumbers: true,
                 tabSize: 1,
+                useWorker: false, 
                 }}/>
           </div>
           <div style = {{height: '100%', width: '1%', borderTop: '0.15px #cacaca50 solid'}} />

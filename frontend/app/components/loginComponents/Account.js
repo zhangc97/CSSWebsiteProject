@@ -36,7 +36,7 @@ class Account extends React.Component {
     const { bio, contact, github, name, website, image} = this.state
     if (!(contact.includes('@')) && contact.length > 3) {
       this.setState({error: 'Please enter a valid email'})
-    } else if(!(github.includes('github'))){
+    } else if(!(github.includes('github')) && github.length > 2){
       this.setState({error: 'Please enter a valid github link'})
     } else {
       var formData = new FormData()
@@ -172,13 +172,16 @@ class Account extends React.Component {
                 className = 'account-input-style'
                 id = 'github'
               />
-              <al>
+              <al style = {{display: 'flex', justifyContent:'space-between'}}>
                 <ac>Bio:</ac>
+                <span style = {{marginTop:'10px', position:'relative', fontSize: '9px'}}>{bio.length > 1 ? 500 -bio.length : 500 - user.profile.bio.length} Characters Remaining</span>
+
               </al>
               <textarea
                 className ='boxsizingBorder'
+                maxLength = '600'
                 onChange = {event => this.setState(byPropKey('bio', event.target.value))}
-                placeholder = {user.profile.bio}
+                defaultValue = {user.profile.bio}
                 id = 'bio'
               ></textarea>
               <button type = 'submit' className = 'btn'>

@@ -24,7 +24,7 @@ export const update_profile = (data) => {
     },
     body: data
   }
-  console.log(data.get('file'))
+  console.log(data);
   if(fetch(url, config)
     .then(res => res ? true : false)){
       return true

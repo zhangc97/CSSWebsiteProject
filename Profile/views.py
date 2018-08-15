@@ -28,7 +28,7 @@ class ProfileUpdateAPIView(UpdateAPIView):
 
         def update(self, request, *args, **kwargs):
             serializer_data = request.data
-            print(request)
+            print(request.data)
             serializer = self.serializer_class(
                 request.user, data=serializer_data, partial=True
             )
