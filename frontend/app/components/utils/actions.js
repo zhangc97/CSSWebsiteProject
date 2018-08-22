@@ -158,7 +158,6 @@ export function sendCode(e, data) {
       .then(user => ({user, res})))
       .then(({user,res}) => {
         if(!res.ok){
-
           return Promise.reject(user)
         } else{
           dispatch(receiveCodeSubmit())

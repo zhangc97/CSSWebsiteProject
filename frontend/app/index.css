@@ -310,7 +310,7 @@ th {
   justify-content: center;
   display: flex;
 
-
+  margin-right: 7px;
 }
 
 .nav-link {
@@ -327,7 +327,7 @@ th {
 }
 
 .links-container{
-  width: 400px;
+  width: 520px;
   display:flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -694,4 +694,20 @@ ac {
   margin-top: 5px;
   border: 0.25px #cacaca solid;
   padding: 2px;
+}
+/*-------------------------Leaderboard--------------------------------*/
+.leaderboard-container {
+  position:relative;
+  width:500px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.leaderboard-listing {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }

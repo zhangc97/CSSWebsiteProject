@@ -46,7 +46,6 @@ class NonCreateView extends React.Component {
               dispatch = {dispatch}
               isAuthenticated = {isAuthenticated}
               errorMessage = {errorMessage}/>
-              <Leaderboard />
           </div>)
           : (<div>sdfsdfsfd</div>)}
         <div className = 'elements-container'>

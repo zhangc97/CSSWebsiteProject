@@ -36,7 +36,7 @@ class RegistrationAPIView(APIView):
     def post(self, request) :
         user = request.data
         serializer = self.serializer_class(data=user) #create serializer
-
+        print(user)
         serializer.is_valid(raise_exception=True) #validate serializer
         serializer.save() #save serializer in database
 

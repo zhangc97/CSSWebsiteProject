@@ -5,9 +5,10 @@ import Logout from './loginComponents/Logout'
 import Signin from './loginComponents/signin'
 import register from './loginComponents/register'
 import Account from './loginComponents/Account'
+import Leaderboard from './mainComponents/Leaderboard'
 import { loginUser, logoutUser } from './utils/actions'
 
-const routes = ['/signin', '/register', '/FAQ','/Account']
+const routes = ['/signin', '/register', '/FAQ','/Account','/Leaderboard']
 
 class Navbarlinks extends React.Component {
   constructor(props){
@@ -52,6 +53,7 @@ class Navbarlinks extends React.Component {
   render() {
     const {isOpen, changePage, modal_width, modal_height} = this.state;
     const {dispatch, isAuthenticated, errorMessage} = this.props
+    let modal_background = '#d2e5f3'
     let styles = {
       overlay: {
         position: 'fixed',
@@ -69,29 +71,32 @@ class Navbarlinks extends React.Component {
         bottom: 'auto',
         marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        border: '1px solid #ccc',
-        background: '#fffefe',
+        background: modal_background,
         overflow: 'auto',
         WebkitOverflowScrolling: 'touch',
         borderRadius: '4px',
         outline: 'none',
         padding: '20px',
+        border: '0',
+        padding: '5px'
       }
     }
     return (
       <React.Fragment>
         {!isAuthenticated &&
           <React.Fragment>
-            <div onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></div>
-            <div onClick = {(e) => this.navClick(e, '/register')} className = 'nav-btn' id = 'register'><Link to = '/register' className = 'nav-link'>Register</Link></div>
-            <div onClick = {(e) => this.navClick(e, '/signin')} className = 'nav-btn' id = 'signin'><Link to = '/signin' className = 'nav-link'>Sign in</Link></div>
+            <button onClick = {(e) => this.navClick(e, '/Leaderboard')} className = 'nav-btn' id = 'leaderboard' style = {{width: '120px'}}><Link to = '/Leaderboard' className = 'nav-link'>Leaderboard</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq' style = {{width: '60px'}}><Link to = '/FAQ'  className = 'nav-link'>FAQ</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/register')} className = 'nav-btn' id = 'register'><Link to = '/register' className = 'nav-link'>Register</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/signin')} className = 'nav-btn' id = 'signin'><Link to = '/signin' className = 'nav-link'>Sign in</Link></button>
           </React.Fragment>
         }
 
         {isAuthenticated &&
           <React.Fragment>
-            <button onClick = {(e) => this.navClick(e, '/Account')} className = 'nav-btn' id = 'account'><Link to = '/Account' className = 'nav-link'>Account</Link></button>
-            <button onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq'><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/Leaderboard')} className = 'nav-btn' id = 'leaderboard' style = {{width: '120px'}}><Link to = '/Leaderboard' className = 'nav-link'>Leaderboard</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/FAQ')} className = 'nav-btn' id = 'faq' style = {{width: '60px'}}><Link to = '/FAQ' className = 'nav-link'>FAQ</Link></button>
+            <button onClick = {(e) => this.navClick(e, '/Account')} className = 'nav-btn' id = 'account' style = {{width: '80px'}}><Link to = '/Account' className = 'nav-link'>Account</Link></button>
             <Logout onLogoutClick={() => dispatch(logoutUser())} />
           </React.Fragment>
         }
@@ -119,6 +124,7 @@ const Routes = (props) => {
   const StoreProps = props
   return(
       <React.Fragment>
+          <Route path = '/Leaderboard' component = {Leaderboard} />
           <Route path = '/register' component = {register} />
           <Route path = '/Account' render = {(props) => <Account {...props} {...StoreProps} />} />
           <Route path = '/FAQ' component = {faq} />

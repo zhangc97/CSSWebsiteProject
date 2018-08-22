@@ -45,6 +45,7 @@ class SignUpForm extends React.Component {
       password,
     }
     console.log('here')
+    console.log(handle_signup(e,signup_credentials))
     if(handle_signup(e,signup_credentials)){
       this.props.history.push('/signin')
       this.setState({
