@@ -42,24 +42,32 @@ class Leaderboard extends React.Component {
             bar_size = `${bar_size_calc}%`
           }
           return (
-            <React.Fragment>
-            <div key = {id} style = {{marginTop: '2px', }} className= 'leaderboard-listing'>
+            <React.Fragment key = {id}>
+            <div style = {{marginTop: '2px', }} className= 'leaderboard-listing'>
               <div style = {{marginRight: '10px', backgroundColor: 'transparent', height: '50px', width:'50px'}}>
                 <img src = {server_url + player.image} style = {{height: '50px', width: '50px', borderRadius : '50px', opacity:'0.99'}}></img>
               </div>
 
               <div style = {{width: '70%', justifyContent: 'space-around', alignItems: 'flex-start'}} className = 'flex-column'>
-                {i + '.  ' + player.username}
+                <div className = 'flex-row-simple-wrap' style = {{alignItems: 'baseline'}}>
+                  <span style = {{color: 'black', fontSize: '20px', fontWeight: '500', marginRight: '5px'}}>
+                    {i + '.'}
+                  </span>
+                  <span style = {{color: 'grey'}}>
+                  {player.username}
+                  </span>
+
+                </div>
                 <Star_bar width = {bar_size} />
               </div>
               <div style = {{marginLeft: '30px', height: '60px'}} className = 'flex-row-custom' >
                 <FontAwesomeIcon
                   icon="star"
                   style = {{color: 'yellow', fontSize: '20px', marginRight: '3px' }}/>
-                  <h1 style ={{fontSize: '20px',margin: '0', fontWeight: '400'}}>{player.total_stars}</h1>
+                  <h1 style ={{fontSize: '20px',margin: '0', fontWeight: '400', color:'grey'}}>{player.total_stars}</h1>
               </div>
             </div>
-            <div style = {{width: '90%', height:'1px', position:'relative', backgroundColor:'#a9a9a9', left:'5%', marginBottom: '5px', marginTop:'5px'}}>
+            <div style = {{width: '90%', height:'1px', position:'relative', backgroundColor:'#a9a9a9', left:'2.5%', marginBottom: '5px', marginTop:'5px'}}>
 
             </div>
           </React.Fragment>
@@ -82,7 +90,7 @@ const Star_bar = (width) => {
     backgroundImage: 'linear-gradient(to right,#dcdcdc,#e45252)'
   }
   return (
-  <div style = {{width:'100%', height: '3px', backgroundColor:'#f7f7f7', borderRadius: '3px'}}>
+  <div style = {{width:'100%', height: '3px', backgroundColor:'#dcdcdc', borderRadius: '3px'}}>
     <div style = {star_bar_style}>
     </div>
   </div>)

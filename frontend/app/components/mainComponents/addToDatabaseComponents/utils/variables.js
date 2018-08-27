@@ -6,7 +6,7 @@ export const options = [
   {value: 'text', label: 'Text'},
   {value: 'select', label: 'Select'},
   {value: 'form', label: 'Form'},
-  {value: 'animation', label: 'Animation'}
+  {value: 'other', label: 'Other'}
 ]
 
 export var base_tpl =

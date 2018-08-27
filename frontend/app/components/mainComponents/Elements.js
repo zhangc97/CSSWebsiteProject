@@ -15,7 +15,7 @@ const options = [
   {value: 'stars', label: 'Lowest Rated'},
 ]
 
-const routes = ['/Button', '/Table', '/List', '/Link', '/Text', '/Select', '/Form', '/Animation']
+const routes = ['/Button', '/Table', '/List', '/Link', '/Text', '/Select', '/Form', '/Other']
 
 const routeConvert = (currentroute) => {
   switch(currentroute) {
@@ -35,6 +35,8 @@ const routeConvert = (currentroute) => {
       return 'form'
     case '/Animation':
       return 'animation'
+    case '/Other':
+      return 'other'
   }
 }
 

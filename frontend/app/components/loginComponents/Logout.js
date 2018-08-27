@@ -14,16 +14,11 @@ class Logout extends React.Component {
     const { onLogoutClick } = this.props
 
     return (
-      <button onClick={this.onClick} className = 'nav-btn' ><Link to = '/'  className = 'nav-link' >
+      <button onClick={this.onClick} className = 'nav-btn' >
         Logout
-      </Link>
       </button>
     )
   }
 }
 
 export default withRouter(Logout)
-
-//Logout.propTypes = {
-//  onLogoutClick: PropTypes.func.isRequired
-//}

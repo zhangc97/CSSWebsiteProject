@@ -59,6 +59,7 @@ class Account extends React.Component {
         this.setState({
           error: 'Updated'
         })
+        window.location.reload()
       } else {
         this.setState({
           error: 'Error, please try again'
@@ -179,7 +180,7 @@ class Account extends React.Component {
               </al>
               <textarea
                 className ='boxsizingBorder'
-                maxLength = '600'
+                maxLength = '500'
                 onChange = {event => this.setState(byPropKey('bio', event.target.value))}
                 defaultValue = {user.profile.bio}
                 id = 'bio'
