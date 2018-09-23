@@ -43,7 +43,7 @@ export const table_template =
 
 export const list_template =
   "<div>\n" +
-  "\t<ul\n" +
+  "\t<ul>\n" +
   "\t\t<li>\n" +
   "\t\t</li>\n" +
   "\t\t<li>\n" +

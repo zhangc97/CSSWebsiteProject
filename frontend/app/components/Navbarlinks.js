@@ -149,8 +149,26 @@ const Routes = (props) => {
 
 }
 const Faq = () => (
-  <div>
-    Hello World, this is the FAQ
+  <div className = 'faq-container'>
+    <h4>What is this website?</h4>
+    <p>When I first started web developing I noticed my sites were very mundane and plain. Any sort of decorative HTML/CSS materials I found online
+      were either extremely complicated or required libraries I did not know how to use. So I decided to create _____ which allows fellow beginner web developers
+      to post and share their unique and simple design elements
+    </p>
+    <h4>How do I post an element?</h4>
+    <p>
+      Simply register for an account, log in and then click create. Only CSS and HTML are offered at the moment because the goal of this site is to keep everything simple
+      and beginner friendly
+    </p>
+    <h4>What are stars for?</h4>
+    <p>
+      The short answer, Nothing. They're mearly a scoring system that I thought would add a little bit of competitive edge to this site.
+    </p>
+    <h4>Who are you?</h4>
+    <p>
+      I'm a student currently finishing up his degree in Computer Engineering who enjoys web design in his spare time.
+    </p>
+
   </div>
 )
 export default Navbarlinks

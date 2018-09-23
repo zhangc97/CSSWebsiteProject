@@ -71,7 +71,7 @@ th {
 }
 
 .item-selector {
-  margin-top: 75px;
+  margin-top: 65px;
   display: flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -261,7 +261,7 @@ th {
   height:100%;
   left: 0%;
   width: 250px;
-  background-image:linear-gradient(to bottom, #fb7171, #ffd3d3);
+  background-color: #fb7171;
   border-right: 0.25px #cacaca solid;
   display: flex;
   flex-direction: column;
@@ -280,8 +280,22 @@ th {
   border: 0.25px #ffffff solid;
   cursor: pointer;
   background-color:#ffeeee;
+  border-radius: 10px;
   box-shadow: 2px 2px 2px grey;
 }
+
+.sidebar-list-items {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top:5px;
+  width: 230px;
+  height: 40px;
+  background-color:#ffeeee;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 10px;
+}
+
 .sidebar-items:hover {
   box-shadow: 0px 0px 0px white;
   border:0;
@@ -415,7 +429,7 @@ th {
   margin-left: 250px;
   margin-top: 50px;
   height: calc(100vh - 50px);
-
+  position: relative;
   display:flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -443,6 +457,7 @@ th {
   flex-direction: row;
   flex-wrap:wrap;
   height: 300px;
+  position: relative;
 }
 
 .wrapper {
@@ -454,13 +469,12 @@ th {
 .editor-expanded {
   width: 49.5%;
   height: 100%;
-
+  position: relative;
 }
 
 .textarea-form {
   resize: none;
 }
-
 
 .display {
   width: 80%;
@@ -482,6 +496,26 @@ th {
   justify-content: center;
   align-items: center;
 }
+
+.corner-display {
+  right: 0px;
+  top: 0px;
+  width: 50px;
+  height:30px;
+  display:flex;
+  border-bottom-left-radius: 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  background-color:#d6d4d3;
+  position: absolute;
+  z-index: 5;
+  color: black;
+  font-weight: 350;
+  font-size: 16px;
+  cursor: none;
+}
+
 
 /*-----------------------Info Container-------------------------------*/
 .info-container {
@@ -672,7 +706,7 @@ th {
 }
 .account-container {
   width: 400px;
-  height: 475px;
+  height: 575px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -682,7 +716,10 @@ al {
   height: 30px;
   display: flex;
   align-items: center;
+}
 
+.svg-inline--fa fa-cloud-upload-alt fa-w-20 {
+  position: relative;
 }
 
 ac {
@@ -721,4 +758,24 @@ ac {
   width: 100%;
   display: flex;
   flex-direction: row;
+}
+
+/*-----------------------------------FAQ---------------------------------*/
+.faq-container {
+  height: 600px;
+  width: 450px;
+  display:flex;
+  flex-direction: column;
+}
+
+.faq-container h4 {
+  padding: 0;
+  margin: 0;
+  margin-top: 12px;
+}
+
+.faq-container p {
+  padding: 0;
+  margin: 0;
+  margin-top:5px;
 }

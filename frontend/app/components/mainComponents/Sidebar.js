@@ -47,6 +47,9 @@ class Sidebar extends React.Component {
               </div>
             )
           })}
+          <div className='sidebar-items' style = {{width:'230px'}} onClick = {(e) => this.navClick(e, '/')}>
+              <Link to = {'/'} style = {style}>All</Link>
+          </div>
         </div>
       </React.Fragment>
     )

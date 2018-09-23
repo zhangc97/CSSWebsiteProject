@@ -82,7 +82,7 @@ class Account extends React.Component {
         ? !edit_mode
           ? (
           <div className = 'account-container'>
-            <img src = {url + user.profile.image} style = {{marginBottom: '5px', width: '100px', height: '100px'}}></img>
+            <img src = {url + user.profile.image} style = {{marginBottom: '5px', width: '200px', height: '200px', borderRadius: '200px', border: '2px black solid'}}></img>
             <div style= {{borderBottom: '0.25px #cacaca solid', width:'100%', height:'1px'}} />
             <div className = 'account-info'>
               <al>
@@ -112,19 +112,22 @@ class Account extends React.Component {
         )
         : (
           <div className = 'account-container'>
-            <div className = 'dropzone' style = {{width: '100px', height: '100px', marginBottom: '10px', cursor: 'pointer'}}>
+            <div className = 'dropzone' style = {{width: '200px', height: '200px', marginBottom: '10px', cursor: 'pointer',}}>
               <Dropzone
                 onDrop ={this.onDrop}
                 style = {{
-                  position:'relative',
-                  width: '100px',
-                  height: '100px',
+                  width: '200px',
+                  height: '200px',
                   borderWidth: '2px',
                   borderColor: 'rgb(102, 102, 102)',
                   borderStyle: 'dashed',
-                  borderRadius: '5px',
+                  borderRadius: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+
                 }}>
-                {image!=null ? <img src = {image.preview} style = {{width: '100%', height: '100%'}}></img> : <FontAwesomeIcon icon = "cloud-upload-alt" style ={{position: 'absolute', fontSize: '40px', left: '25px', top: '25px'}}/>}
+                {image!=null ? <img src = {image.preview} style = {{width: '100%', height: '100%'}}></img> : <FontAwesomeIcon icon = "cloud-upload-alt" style ={{ fontSize: '60px', left: '25px', top: '25px'}}/>}
               </Dropzone>
             </div>
             <div style= {{borderBottom: '0.25px #cacaca solid', width:'100%', height:'1px'}} />

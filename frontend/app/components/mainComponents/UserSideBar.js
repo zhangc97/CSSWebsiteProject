@@ -23,7 +23,7 @@ class UserSideBar extends React.Component {
     return(
       profile
         ? (
-          <div className = 'sidebar-container' style = {{backgroundColor: '#f4f5ff', marginTop:'50px', width:'250px'}}>
+          <div className = 'sidebar-container' style = {{color: '#f5f5f5f0', marginTop:'50px', width:'250px'}}>
             <div className= 'user-display'>
               <h2 style ={{margin: '0', fontWeight: '400', marginBottom: '10px'}}>{profile.username}</h2>
 
@@ -31,25 +31,25 @@ class UserSideBar extends React.Component {
               <div className = 'flex-row-custom'>
                 <FontAwesomeIcon
                   icon="star"
-                  style = {{color: 'yellow', fontSize: '20px', marginRight: '10px' }}/>
-                  <h1 style ={{margin: '0'}}>{profile.total_stars}</h1>
+                  style = {{color: 'yellow', fontSize: '24px', marginRight: '5px' }}/>
+                  <h1 style ={{margin: '0', fontWeight: '400'}}>{profile.total_stars}</h1>
               </div>
 
-              <div className = 'flex-row-simple' style ={{marginTop: '5px', }}>
-                <img src = {WebLogo} style = {{height: '22px', width: '22px', position:'relative', left:'-3px', marginRight:'4px'}}></img>
-                <a href= {profile.website} style ={{margin: '0',fontSize: '14px', fontWeight: '400', textDecoration: 'none', color:'grey'}}>Website</a>
+              <div className = 'sidebar-list-items' >
+                <img src = {WebLogo} style = {{height: '22px', width: '22px', position:'relative',marginLeft:'5px', marginRight:'4px'}}></img>
+                <a href= {profile.website} style ={{margin: '0',fontSize: '14px', fontWeight: '400', textDecoration: 'none', color: '#040404b5'}}>{profile.website}</a>
               </div>
-              <div className = 'flex-row-simple' style ={{marginTop: '5px', }}>
-                <img src = {githubLogo} style = {{height: '24px', width: '24px', position:'relative', left:'-4px', marginRight:'3px'}}></img>
-                <a href={profile.github} style ={{margin: '0',fontSize: '14px', fontWeight: '400', textDecoration: 'none', color:'grey'}}>Github</a>
+              <div className = 'sidebar-list-items'>
+                <img src = {githubLogo} style = {{height: '24px', width: '24px', position:'relative', marginLeft: '4px', marginRight:'3px'}}></img>
+                <a href={profile.github} style ={{margin: '0',fontSize: '14px', fontWeight: '400', textDecoration: 'none', color: '#040404b5'}}>{profile.github}</a>
               </div>
-              <div className = 'flex-row-simple' style ={{marginTop: '5px', }}>
-                <FontAwesomeIcon icon="envelope" style = {{color: 'black',marginRight:'9px',fontSize:'18px', position: 'relative', left:'-1px' }}/>
-                <a style ={{margin: '0', fontSize: '14px',fontWeight: '400', textDecoration: 'none', color:'grey'}}>{profile.contact}</a>
+              <div className = 'sidebar-list-items'>
+                <FontAwesomeIcon icon="envelope" style = {{color: 'black', marginLeft: '6px', marginRight:'7px',fontSize:'18px', position: 'relative' }}/>
+                <a style ={{margin: '0', fontSize: '14px',fontWeight: '400', textDecoration: 'none',color: '#040404b5'}}>{profile.contact}</a>
               </div>
-              <div className = 'flex-row-simple-wrap' style = {{marginTop: '5px'}}>
+              <div className = 'flex-row-simple-wrap' style = {{marginTop: '5px',  width: '218px', backgroundColor:'#ffeeee', boxShadow: '2px 2px 2px grey', borderRadius: '10px', padding: '6px'}}>
                 <img src = {biographyLogo} style = {{height: '22px', width: '22px', position:'relative', left:'-3px', marginRight:'4px'}}></img>
-                <p style ={{margin: '0', fontSize: '14px',fontWeight: '400', textDecoration: 'none', color:'grey', marginTop:'2px'}}>
+                <p style ={{margin: '0', fontSize: '14px',fontWeight: '400', textDecoration: 'none', marginTop:'2px', color: '#040404b5'}}>
                   {profile.bio}
                 </p>
               </div>

@@ -28,20 +28,31 @@ class CreationSection extends React.Component {
       comments: '',
       html_value: '',
       css_value: '',
+      template:'',
     }
 
     this.onChangeHTML = this.onChangeHTML.bind(this)
     this.onChangeCSS = this.onChangeCSS.bind(this)
-    this.onClick = this.onClick.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.prepareSource = this.prepareSource.bind(this)
     this.renderSource = this.renderSource.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   componentDidMount() {
-    this.renderSource();  }
+    this.renderSource();
+  }
   componentDidUpdate() {
     this.renderSource();
+  }
+  componentDidUpdate(prevProps){
+    if(this.props.template != prevProps.template) {
+      this.setState({
+        template: this.props.template,
+        html_value: this.state.html_value + this.props.template
+      }, ()=>this.renderSource())
+
+    }
   }
 
   prepareSource = (html_value, css_value) => {
@@ -59,7 +70,6 @@ class CreationSection extends React.Component {
     var doc = this.prepareSource(this.state.html_value, this.state.css_value)
     const iframe = this.refs.iframe
     const iframeContent = iframe.contentDocument;
-    console.log(this.state.html_value)
     iframeContent.open()
     iframeContent.write(doc)
     iframeContent.close()
@@ -82,17 +92,28 @@ class CreationSection extends React.Component {
     this.renderSource()
   }
 
-  onClick = () => {
-    console.log('clicked')
+  onClick = (e, modal) => {
+    e.preventDefault()
+    const {html_corner, css_corner} = this.state
+    switch (modal) {
+      case 'html':
+        this.setState({
+          html_corner: !html_corner
+        })
+        break;
+      case 'css':
+        this.setState({
+          css_corner : !css_corner
+        })
+        break;
+    }
   }
-
   onSubmit = (e) => {
     //add API call
     e.preventDefault()
     const parsedCode = this.prepareSource(this.state.html_value, this.state.css_value)
     const {title, element,  user, html_value, css_value} = this.state
     const data = { user, title, element, parsedCode, html_value, css_value}
-    console.log(this.props)
     if (data.title.length < 1 ) {
       this.setState({error: 'Please create a title'})
     } else if (data.element.length < 1) {
@@ -117,7 +138,7 @@ class CreationSection extends React.Component {
   }
   render(){
     //console.log(this.state)
-    const {title, element, comments, error} = this.state
+    const {title, element, comments, error, html_corner, css_corner} = this.state
     return(
       <div className = 'editor-container'>
         <span className = 'error-span'>{error ? error : null}</span>
@@ -146,7 +167,10 @@ class CreationSection extends React.Component {
         </div>
 
         <div className = 'editor-container-expanded-creation'>
-          <div className = 'editor-expanded' onClick = {this.onClick}>
+          <div className = 'editor-expanded' onClick = {(e) => this.onClick(e, 'html')}>
+            <div className = 'corner-display'>
+              HTML
+            </div>
             <AceEditor
                 mode="html"
                 theme="monokai"
@@ -166,11 +190,14 @@ class CreationSection extends React.Component {
                 enableSnippets: false,
                 showLineNumbers: true,
                 tabSize: 1,
-                useWorker: false, 
+                useWorker: false,
                 }}/>
           </div>
           <div style = {{height: '100%', width: '1%', borderTop: '0.15px #cacaca50 solid'}} />
-          <div className = 'editor-expanded'>
+          <div className = 'editor-expanded' onClick = {(e) => this.onClick(e, 'css')}>
+            <div className = 'corner-display'>
+              CSS
+            </div>
             <AceEditor
                 mode="css"
                 theme="monokai"
