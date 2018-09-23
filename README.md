@@ -10,6 +10,12 @@ I created this website because when I first started to web develop, I found it h
 * Platform: Amazon EC2
 * Testing: Selenium and Postman
 
+## Hosting
+
+```
+http://htmlstylingwebsite.s3-website-us-east-1.amazonaws.com/
+```
+
 ## Usage
 ```
 git pull https://github.com/zhangc97/CSSWebsiteProject.git
