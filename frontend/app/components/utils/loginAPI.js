@@ -1,9 +1,9 @@
-
+import {host} from './host'
 
 export const handle_signup = (e,data) => {
   e.preventDefault();
   console.log(data)
-  fetch('http://127.0.0.1:8000/api/users/', {
+  fetch(`${host}/api/users/`, {
     method: 'POST',
     headers: {
       'Content-Type' : 'application/json'

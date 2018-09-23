@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import WebLogo from '../utils/WWW.png'
 import githubLogo from '../utils/github.png'
 import biographyLogo from '../utils/biography.png'
-const url = 'http://127.0.0.1:8000/api'
+import {host} from '../utils/host'
+const url = host
 
 
 class UserSideBar extends React.Component {

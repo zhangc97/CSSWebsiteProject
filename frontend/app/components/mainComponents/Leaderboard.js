@@ -2,8 +2,9 @@ import React from 'react'
 import {fetch_leaderboard} from '../utils/api'
 import Stars from 'react-star-ratings'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {host} from '../utils/host'
 
-const server_url = "http://127.0.0.1:8000/api"
+const server_url = host
 var top_score = 100;
 
 class Leaderboard extends React.Component {

@@ -6,8 +6,8 @@ import Loading from '../mainComponents/Loading'
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]:value,
 })
-
-const url = 'http://127.0.0.1:8000/api'
+import {host} from '../utils/host'
+const url = host;
 
 class Account extends React.Component {
   constructor(props){

@@ -10,6 +10,7 @@ export const CODE_SUBMIT_REQUEST = 'CODE_SUBMIT_REQUEST'
 export const CODE_SUBMIT_SUCCESS = 'CODE_SUBMIT_SUCCESS'
 export const CODE_DISPLAY_REQUEST = 'CODE_DISPLAY_REQUEST'
 export const CODE_DISPLAY_SUCCESS = 'CODE_DISPLAY_SUCCESS'
+import {host} from './host'
 
 function requestCodeData(){
   return{
@@ -111,7 +112,7 @@ function loginError(message) {
 export function displayCode(sort, route, pagenumber){
   console.log(sort, route, pagenumber)
 
-  var url = `http://127.0.0.1:8000/api/fiddles/get?page=${pagenumber}`
+  var url = `${host}/api/fiddles/get?page=${pagenumber}`
   if (sort && sort != 'none') {
     url = url + `&ordering=${sort}`
   }
@@ -153,7 +154,7 @@ export function sendCode(e, data) {
   return dispatch => {
     dispatch(requestCodeSubmit(data))
 
-    return fetch('http://127.0.0.1:8000/api/fiddles', config)
+    return fetch(`${host}/api/fiddles`, config)
       .then(res => res.json()
       .then(user => ({user, res})))
       .then(({user,res}) => {
@@ -180,7 +181,7 @@ export function loginUser(e, creds) {
   return dispatch => {
     dispatch(requestLogin(creds))
 
-    return fetch('http://localhost:8000/api/users/login', config)
+    return fetch(`${host}/api/users/login`, config)
       .then(res => res.json()
       .then(user => ({user, res})))
       .then(({ user, res}) => {

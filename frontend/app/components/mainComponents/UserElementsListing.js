@@ -4,7 +4,7 @@ import Loading from './Loading'
 import Stars from 'react-star-ratings'
 import {Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {host} from '../utils/host'
 class UserElementsListing extends React.Component {
   constructor(props){
     super(props)
@@ -44,7 +44,7 @@ class UserElementsListing extends React.Component {
             </div>
           </div>
           <div className = 'info-display-container'>
-            <iframe className="info-display-container" ref='iframe' frameBorder ="no" scrolling = "no" src = {`http://127.0.0.1:8000/api/fiddles/${result.post_id}/`} />
+            <iframe className="info-display-container" ref='iframe' frameBorder ="no" scrolling = "no" src = {`${host}/api/fiddles/${result.post_id}/`} />
           </div>
           <div className ='info-info-container-bottom'>
             <Link to = {`/post/${result.post_id}`} className = 'info-container-link' style = {{fontSize: '14px'}}>View</Link>

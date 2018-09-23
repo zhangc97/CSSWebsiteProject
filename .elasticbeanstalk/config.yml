@@ -1,0 +1,22 @@
+branch-defaults:
+  master:
+    environment: Real-CSSProject-env
+    group_suffix: null
+environment-defaults:
+  CSSWebsiteProject-v1:
+    branch: null
+    repository: null
+global:
+  application_name: Real_CSSProject
+  branch: null
+  default_ec2_keyname: CSSProject
+  default_platform: Python 3.6
+  default_region: us-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: null
+  sc: git
+  workspace_type: Application

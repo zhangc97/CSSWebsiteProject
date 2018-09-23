@@ -5,7 +5,7 @@ import Stars from 'react-star-ratings'
 import {handle_stars} from '../utils/api'
 import {withRouter, Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {host} from '../utils/host'
 class ListingBlock extends React.Component {
   constructor(props){
     super(props);
@@ -133,7 +133,7 @@ class ListingBlock extends React.Component {
                 </div>
               </div>
               <div className = 'info-display-container' >
-                <iframe className="info-display-container" frameBorder ="no" scrolling = "no" src = {`http://127.0.0.1:8000/api/fiddles/${result.post_id}/`} />
+                <iframe className="info-display-container" frameBorder ="no" scrolling = "no" src = {`${host}/api/fiddles/${result.post_id}/`} />
               </div>
               <div className = 'info-click-overlay' onClick={this.onClick}></div>
               <div className = 'info-info-container-bottom'>

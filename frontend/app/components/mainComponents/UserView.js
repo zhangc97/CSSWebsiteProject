@@ -7,8 +7,9 @@ import Dropdown from 'react-dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UserSideBar from './UserSideBar'
 import './componentStyling/dropdown.css';
+import {host} from '../utils/host'
 
-const url = 'http://127.0.0.1:8000/api'
+const url = host
 const options = [
   {value: '-votes', label: 'Most Popular'},
   {value: '-stars', label: 'Highest Rated'},
